@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Thermostat</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <script src="/jasmine/src/Thermostat.js"></script>
+  <script src="/interface/jquery-3.1.1.min.js"></script>
+  <script src="/config.js"></script>
+</head>
+
+<body>
+
+  <h1>Thermostat</h1>
+  <div style="display:in-line;"><h2>Current Temperature:<span id="currentTemp"></span></h2></div>
+  <div style="display:in-line;"><h2>Energy Usage:<button class="low-usage" id="energyUsage"></button></h2></div>
+  <div style="display:in-line;"><h2>Outside Temperature:<span id="outsideTemp"></span></h2></div>
+
+  <select id="select-city">
+    <option value="London">London</option>
+    <option value="NewYork">New York</option>
+    <option value="Tokyo">Tokyo</option>
+    <option value="NewDelhi">New Delhi</option>
+    <option value="Berlin">Berlin</option>
+    <option value="Rome">Rome</option>
+    <option value="Toronto">Toronto</option>
+    <option value="Istanbul">Istanbul</option>
+    <option value="Paris">Paris</option>
+  </select>
+
+  <h2 class="PSM">Power Saving Mode: <button id="psm-btn"></button></h2><br>
+  <button onClick="psmToogle();" type="button" id="tooglePSM">Toogle PSM</button>
+
+  <button type="button" id="resetTemp">Reset Temperature</button>
+  <button type="button" id="upTemp">Increase Temperature</button>
+  <button type="button" id="downTemp">Decrease Temperature</button>
+
+  <script src="/interface/thermostatInterface.js"></script>
+</body>
+</html>
