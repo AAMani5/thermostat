@@ -42,10 +42,8 @@ $("#downTemp").click(function(){
 
 
 function displayTemp(){
-  // storedTemp = storedTemp() || thermostat.getCurrentTemperature();
   $('#currentTemp').text(thermostat.getCurrentTemperature());
   storeCurrentTemp(thermostat.getCurrentTemperature());
-  storedTemp();
   changeClass();
 }
 
@@ -59,5 +57,5 @@ function storedTemp(temp){
 }
 
 function storeCurrentTemp(temp){
-  $.post('http://localhost:4567/temperature/current',{currentTemp : temp});
+  $.post('http://localhost:4567/temperature/current',{currentTemp : temp}).done(storedTemp);
 }

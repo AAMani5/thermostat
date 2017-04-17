@@ -17,9 +17,8 @@ p "starting server"
 
   get '/temperature/current' do
     headers 'Access-Control-Allow-Origin' => '*'
-    p "session:#{session.inspect}"
     p "get:#{session[:currentTemp]}"
-    "Temp is: #{session[:currentTemp]}"
+    session[:currentTemp]
   end
 
   run! if app_file == $0
