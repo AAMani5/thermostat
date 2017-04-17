@@ -3,6 +3,7 @@
 
 $( document ).ready(function() {
   thermostat = new Thermostat();
+  storedTemp();
   displayTemp();
   getOutsideTemp('London');
 });
@@ -41,8 +42,9 @@ $("#downTemp").click(function(){
 });
 
 
-function displayTemp(){
-  $('#currentTemp').text(thermostat.getCurrentTemperature());
+function displayTemp(temp){
+  var current = temp || thermostat.getCurrentTemperature();
+  $('#currentTemp').text(current);
   storeCurrentTemp(thermostat.getCurrentTemperature());
   changeClass();
 }
@@ -53,9 +55,10 @@ function changeClass(){
 }
 
 function storedTemp(temp){
-  $.get('http://localhost:4567/temperature/current',function(temp){ console.log(temp);});
+  $.get('http://localhost:4567/temperature/current',function(temp){ displayTemp(temp)
+    console.log(temp);});
 }
 
 function storeCurrentTemp(temp){
-  $.post('http://localhost:4567/temperature/current',{currentTemp : temp}).done(storedTemp);
+  $.post('http://localhost:4567/temperature/current',{currentTemp : temp}) //.done(storedTemp);
 }
